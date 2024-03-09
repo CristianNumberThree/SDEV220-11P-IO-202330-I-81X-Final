@@ -62,11 +62,12 @@ class DatabaseManager:
         conn.close()
         return results
 
+    #currently the db file only has test data but when executing on full db files all attributes (columns) are displayed
     def fetch_infinity_query_results(self,mold):
         conn = sqlite3.connect('data.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM Molds WHERE description=?", (mold,))
-        result = cursor.fetchone()
+        cursor.execute("SELECT * FROM Molds WHERE id=?", (mold,))
+        result = cursor.fetchall()
         cursor.close()
         conn.close()
         if result:
@@ -282,7 +283,7 @@ class ChangeRequestApp:
             "75624B 78cc Vial" , "75624C 78cc Vial" , "75624D 78cc Vial" , "75624E 78cc Vial", "75624F 78cc Vial" , "75624G 78cc Vial" ,
             "75624H 78cc Vial" , "75624J 78cc Vial" , "75624K 78cc Vial" , "75624L 78cc Vial" , "75624M 78cc Vial" , "75624N 78cc Vial" ,
             "76032A 80ml Vial" , "76032B 80ml Vial" , "76032C 80ml Vial" , "76032D 80ml Vial" , "76032E 80ml Vial" , "76032F 80ml Vial" ,
-            " 76032G 80ml Vial"
+            "76032G 80ml Vial"
         ],
         "Injection Molds": [
             "1941 Navigator Cap" , "1942 39ml Vial" , "5838" , "30980" , "31098" , "31157" , "31167" , "31311" , "A-1638-A1 Applicator Stick" ,
@@ -308,14 +309,14 @@ class ChangeRequestApp:
             "5266A HDPE 180ml Round" , "5266A Lugs 180ml Round" , "5266A PP 180ml Round" , "5297 45cc Wht Rnd" ,
             "5297A 45cc Wht Rnd" , "5308 1.6oz Trapezoidal" , "5308B 1.6oz Trapezoidal" , "5309 2.7oz Trapezoidal" , "5309B 2.7oz Trapezoidal" ,
             "5324 40cc Round" , "5325 75cc Round" , "5359B 15cc Round" ,
-            "5360 30cc Round" , "5360A 30cc Round" , "5361A 60cc Round" , "5362B 120cc Round" , "5362C  120cc Round" , "5365 2oz Round" ,
+            "5360 30cc Round" , "5360A 30cc Round" , "5361A 60cc Round" , "5362B 120cc Round" , "5362C 120cc Round" , "5365 2oz Round" ,
             "5379 2oz Round" , "5412 60ml Round" , "5422B 75ml Round" , "5422C 75ml Round" , "5422D 75ml Round" , "5422E 75ml Round" ,
             "5429A 1.25oz Round" , "5430 525ml Oblong" , "5436B 325ml Square" , "5436B BMS 325ml Square" , "5437B 60ml Square" , "5437C 60ml Square" ,
             "5439 60ml round" , "5462A 4oz Round" , "5462B 4oz Round" , 
             "5464 2oz Round" , "5491B 120cc Round" , "5492A 150cc Round" , "5493 200cc Round" , "5497 300cc Round" , "5532 2oz Cylinder" ,
             "5548 6ml Vial" , "5549 30ml Vial" , "5566A 250cc Round" , "5593 95ml white square" , "5597 10ml Round" , "5603 315cc Round" ,
             "5605 10ml nat" ,
-            "5611 60cc Round" , "5617B  105cc" , "5625A 20ml Round" , "5625B 20ml Round" , "5648B 45cc Square" , "5648E 45cc Square" , "5655A HDPE 100cc Round" ,
+            "5611 60cc Round" , "5617B 105cc" , "5625A 20ml Round" , "5625B 20ml Round" , "5648B 45cc Square" , "5648E 45cc Square" , "5655A HDPE 100cc Round" ,
             "5655A PP 100cc Round" , "5655B HDPE 100cc Round" , "5655B PP 100cc Round" , "5660A 60cc Square" , "5660B 60cc Square" , "5660C 60cc Square" ,
             "5660D 60cc Square" , "5660E 60cc Square" , "5711 100cc Round" , "5720A 120cc Square" , "5720B 120cc Square" , "5720C 120cc Square" ,
             "5721B 180cc Square" , "5721C 180cc Square" , "5750A 120cc Round" , "5848B 40cc Round" , "5883B 60cc Square" , "5943 10ml Round" ,
